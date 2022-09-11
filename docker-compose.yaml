@@ -20,3 +20,4 @@ services:
 volumes:
   monit_data:  
     external: true
+
