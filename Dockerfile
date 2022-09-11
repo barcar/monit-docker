@@ -13,13 +13,13 @@ COPY pushover /bin/pushover
 
 # Compile and install monit
 RUN \
-    apk add --update gcc musl-dev make bash python3 curl libressl-dev file zlib-dev && \
-    mkdir -p /opt/src; cd /opt/src && \
+    apk add --update gcc musl-dev make bash python3 curl libressl-dev file zlib-dev
+RUN mkdir -p /opt/src; cd /opt/src && \
     wget -qO- ${MONIT_URL}/monit-${MONIT_VERSION}.tar.gz | tar xz && \
     cd /opt/src/monit-${MONIT_VERSION} && \
     ./configure --prefix=${MONIT_HOME} --without-pam && \
-    make && make install && \
-    apk del gcc musl-dev make file zlib-dev && \
+    make && make install
+RUN apk del gcc musl-dev make file zlib-dev && \
     rm -rf /var/cache/apk/* /opt/src
 
 EXPOSE 2812
