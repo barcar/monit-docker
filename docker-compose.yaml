@@ -5,8 +5,6 @@ services:
     build: .
     container_name: monit
     network_mode: host
-    stdin_open: true 
-    tty: true
     environment:
       - PUID=1000
       - PGID=1000
