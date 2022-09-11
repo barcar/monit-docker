@@ -1,6 +1,4 @@
-FROM alpine:latest
-
-LABEL maintainer="Diogo Serrano <info@diogoserrano.com>"
+FROM debian:bullseye-slim
 
 # monit environment variables
 ENV MONIT_VERSION=5.32.0 \
@@ -11,16 +9,10 @@ ENV MONIT_VERSION=5.32.0 \
 COPY slack /bin/slack
 COPY pushover /bin/pushover
 
-# Compile and install monit
-RUN \
-    apk add --update gcc musl-dev make bash python3 curl libressl-dev file zlib-dev
-RUN mkdir -p /opt/src; cd /opt/src && \
-    wget -qO- ${MONIT_URL}/monit-${MONIT_VERSION}.tar.gz | tar xz && \
-    cd /opt/src/monit-${MONIT_VERSION} && \
-    ./configure --prefix=${MONIT_HOME} --without-pam && \
-    make && make install
-RUN apk del gcc musl-dev make file zlib-dev && \
-    rm -rf /var/cache/apk/* /opt/src
+# Install monit
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install monit software-properties-common wget curl docker.io -y
 
 EXPOSE 2812
 
