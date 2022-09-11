@@ -14,6 +14,17 @@ RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get install monit software-properties-common wget curl docker.io -y
 
+#RUN add-apt-repository ppa:ubuntu-toolchain-r/test
+#RUN apt-get update
+# Compile and install monit
+RUN \
+    apt-get -y install gcc musl-dev make bash python3 curl libssl-dev file zlib1g-dev ca-certificates && \
+    mkdir -p /opt/src; cd /opt/src && \
+    wget -qO- ${MONIT_URL}/monit-${MONIT_VERSION}.tar.gz | tar xz && \
+    cd /opt/src/monit-${MONIT_VERSION} && \
+    ./configure --prefix=${MONIT_HOME} --without-pam && \
+    make && make install
+
 EXPOSE 2812
 
 COPY docker-entrypoint.sh /usr/local/bin/
