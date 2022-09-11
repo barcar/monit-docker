@@ -3,7 +3,7 @@ FROM alpine:3.16.0
 LABEL maintainer="Diogo Serrano <info@diogoserrano.com>"
 
 # monit environment variables
-ENV MONIT_VERSION=5.26.0 \
+ENV MONIT_VERSION=5.32.0 \
     MONIT_HOME=/opt/monit \
     MONIT_URL=https://mmonit.com/monit/dist \
     PATH=$PATH:/opt/monit/bin
