@@ -2,14 +2,23 @@
 version: "3.8"
 services:
   monit:
-    image: diogopms/monit-docker-kubernetes:latest
+    build: .
     container_name: monit
+    network_mode: host
+    stdin_open: true 
+    tty: true
     environment:
       - PUID=1000
       - PGID=1000
-      - TZ=Europe/Lisbon
+      - TZ=Europe/London
     volumes:
-      - ./monitrc:/etc/monitrc
+      - monit_data:/mnt
+      - /var/lib/docker/volumes/monit_data/_data/monitrc:/etc/monitrc
+      - /etc/localtime:/etc/localtime:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     ports:
       - 2812:2812
     restart: unless-stopped
+volumes:
+  monit_data:  
+    external: true
