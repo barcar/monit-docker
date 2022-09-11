@@ -9,6 +9,9 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
+      - PUSH_OVER_TOKEN=${PUSH_OVER_TOKEN}
+      - PUSH_OVER_USER=${PUSH_OVER_USER}
+      - DEBUG=${DEBUG}
     volumes:
       - monit_data:/mnt
       - /var/lib/docker/volumes/monit_data/_data/monitrc:/etc/monitrc
