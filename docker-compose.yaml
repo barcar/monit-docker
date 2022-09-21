@@ -11,6 +11,9 @@ services:
       - TZ=Europe/London
       - PUSH_OVER_TOKEN=${PUSH_OVER_TOKEN}
       - PUSH_OVER_USER=${PUSH_OVER_USER}
+      - MQTT_HOST=${MQTT_HOST}
+      - MQTT_USER=${MQTT_USER}
+      - MQTT_PASSWORD=${MQTT_PASSWORD}
       - DEBUG=${DEBUG}
     volumes:
       - monit_data:/mnt
