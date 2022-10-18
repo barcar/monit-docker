@@ -23,8 +23,8 @@ services:
     ports:
       - 2812:2812
     restart: unless-stopped
-    labels:
-      - "com.centurylinklabs.watchtower.enable=true"
+ #   labels:
+ #     - "com.centurylinklabs.watchtower.enable=true"
 volumes:
   monit_data:  
     external: true
