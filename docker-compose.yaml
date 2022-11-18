@@ -4,7 +4,6 @@ services:
   monit:
     build: .
     container_name: monit
-    network_mode: host
     environment:
       - PUID=1000
       - PGID=1000
