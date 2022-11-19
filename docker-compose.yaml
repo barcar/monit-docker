@@ -19,6 +19,7 @@ services:
       - /var/lib/docker/volumes/monit_data/_data/monitrc:/etc/monitrc
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
+    network_mode: host
     ports:
       - 2812:2812
     restart: unless-stopped
