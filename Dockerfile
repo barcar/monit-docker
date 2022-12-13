@@ -13,7 +13,7 @@ COPY pushover /bin/pushover
 # Install monit
 RUN apt-get -y update
 RUN apt-get -y upgrade
-RUN apt-get install wget curl docker.io mosquitto-clients -y
+RUN apt-get install wget curl docker.io mosquitto-clients python3 -y
 
 # Compile and install monit
 RUN \
