@@ -22,8 +22,8 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock
     network_mode: host
-    ports:
-      - 2812:2812
+ #   ports:
+ #     - 2812:2812
     restart: unless-stopped
  #   labels:
  #     - "com.centurylinklabs.watchtower.enable=true"
